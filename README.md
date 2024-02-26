@@ -43,7 +43,8 @@ pip install peft
 pip install wandb
 ```
 #### Step 4: Start Finetuning the model and train it
-Run the `python model_train.py` and you will be notified from wandb `select option 2` and provide the wandb api key mentioned in `tokens_and_model.py`
+Run the command`python model_train.py`.
+You will be notified from wandb `select option 2` and provide the `wandb api key` mentioned in `tokens_and_model.py`
 
 #### Step 5: Plot the loss
 Collected training and validation loss for each step count (count=50) in excel file and plotted a graph with that data.
