@@ -13,7 +13,7 @@ To get a working instance of Mistral Finetune for development and testing purpos
 #### Step 1: Clone the Repository
 Use the following command to clone the Mistral repository :
 ```bash
-git clone 
+git clone https://github.com/SRH-Heidelberg-University/Mistral-Finetune.git 
 ```
 
 #### Step 2: Create a Conda Environment
