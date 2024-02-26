@@ -6,6 +6,7 @@ from prompt import eval_prompt
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from peft import PeftModel
 from tokens_and_model import hf_token,model_id
+# from huggingface_hub import notebook_login
 
 if torch.cuda.device_count() > 1: # If more than 1 GPU
     model.is_parallelizable = True
@@ -73,4 +74,7 @@ ft_model.eval()
 model_input = tokenizer(eval_prompt, return_tensors="pt").to("cuda")
 with torch.no_grad():
     print(tokenizer.decode(ft_model.generate(**model_input, max_new_tokens=100, pad_token_id=2)[0], skip_special_tokens=True))
-    
+
+'''push the model to hugging face and provide my hugging face api key(hf_token) from tokens_and_model.py file '''
+# notebook_login()
+# ft_model.push_to_hub("tejasreereddy/mistral-finetune",use_auth_token=hf_token)
