@@ -1,6 +1,6 @@
 # Mistral Finetune
 
-Let's get started on how to finetune the mistral model,
+Now let's begin the process of optimizing the Mistral model,
 
 ## Getting Started
 To get a working instance of Mistral Finetune for development and testing purposes, follow the below instructions.
