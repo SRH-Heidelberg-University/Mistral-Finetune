@@ -76,5 +76,5 @@ with torch.no_grad():
 
 ft_model.save_pretrained("./my_model")
 tokenizer.save_pretrained("./my_model")
-ft_model.push_to_hub("tejasreereddy/mistral-test",token=hf_token)
-tokenizer.push_to_hub("tejasreereddy/mistral-test",token=hf_token)
+ft_model.push_to_hub("tejasreereddy/mistral-finetune",token=hf_token)
+tokenizer.push_to_hub("tejasreereddy/mistral-finetune",token=hf_token)
