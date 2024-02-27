@@ -5,8 +5,7 @@ from finetune_main import model,tokenizer,tokenized_train_dataset,tokenized_val_
 from prompt import eval_prompt
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from peft import PeftModel
-from tokens_and_model import hf_token,model_id
-# from huggingface_hub import notebook_login
+from tokens_and_model import model_id,hf_token
 
 if torch.cuda.device_count() > 1: # If more than 1 GPU
     model.is_parallelizable = True
@@ -31,7 +30,7 @@ trainer = transformers.Trainer(
         warmup_steps=5,
         per_device_train_batch_size=2,
         gradient_accumulation_steps=4,
-        max_steps=1000,
+        max_steps=1000, 
         learning_rate=2.5e-5, # Want about 10x smaller than the Mistral learning rate
         logging_steps=50,
         bf16=True,
@@ -56,7 +55,7 @@ trainer.train()
 base_model_id= model_id
 
 base_model = AutoModelForCausalLM.from_pretrained(
-     model_id,  # Mistral, same as before
+    base_model_id,  # Mistral, same as before
     quantization_config=bnb_config,  # Same quantization config as before
     device_map="auto",
     trust_remote_code=True,
@@ -67,7 +66,7 @@ tokenizer = AutoTokenizer.from_pretrained(base_model_id, trust_remote_code=True)
 tokenizer.pad_token = tokenizer.eos_token
 
 
-ft_model = PeftModel.from_pretrained(base_model, "mistral-viggo-finetune/checkpoint-1000")
+ft_model = PeftModel.from_pretrained(base_model, "mistral-viggo-finetune/checkpoint-1000") 
 
 ft_model.eval()
 
@@ -75,6 +74,7 @@ model_input = tokenizer(eval_prompt, return_tensors="pt").to("cuda")
 with torch.no_grad():
     print(tokenizer.decode(ft_model.generate(**model_input, max_new_tokens=100, pad_token_id=2)[0], skip_special_tokens=True))
 
-'''push the model to hugging face and provide my hugging face api key(hf_token) from tokens_and_model.py file '''
-# notebook_login()
-# ft_model.push_to_hub("tejasreereddy/mistral-finetune",use_auth_token=hf_token)
+ft_model.save_pretrained("./my_model")
+tokenizer.save_pretrained("./my_model")
+ft_model.push_to_hub("tejasreereddy/mistral-test",token=hf_token)
+tokenizer.push_to_hub("tejasreereddy/mistral-test",token=hf_token)

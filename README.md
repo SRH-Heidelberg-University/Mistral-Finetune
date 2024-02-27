@@ -49,7 +49,7 @@ pip install wandb
 pip install huggingface_hub
 ```
 ```bash
-huggingface-cli login  #provide the access token from your account
+huggingface-cli login  #provide the access token of your account
 ```
 [For access token -> In your profile, under `Access Tokens` section, create a new key with `write` permission]
 
@@ -68,6 +68,7 @@ Collected training and validation loss for each step count (count=50) in excel f
 - Python: Core programming language
 - LangChain: Library for building language model applications
 - Mistral : AI model for natural language understanding and generation
+- Finetune : QLoRA,LoRA and PEFT finetuning techniques
 
 ### Acknowledgments
 Special thanks to SRH Heidelberg for supporting this project.
