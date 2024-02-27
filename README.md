@@ -43,7 +43,18 @@ pip install peft
 pip install wandb
 ```
 #### Step 4: Start Finetuning the model and train it
-Run the command`python model_train.py`.
+1. To save the finetune model in your hugging face profile and verify the model,
+   run the below steps in terminal
+ ```bash
+pip install huggingface_hub
+```
+```bash
+huggingface-cli login  #provide the access token from your account
+```
+[For access token -> In your profile, under `Access Tokens` section, create a new key with `write` permission]
+[To use my account. required access details are provided in `tokens_and_model.py` file]
+
+2. Run the command`python model_train.py`.
 You will be notified from wandb `select option 2` and provide the `wandb api key` mentioned in `tokens_and_model.py`
 
 #### Step 5: Plot the loss
