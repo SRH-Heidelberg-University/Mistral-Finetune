@@ -60,7 +60,7 @@ pip install wandb
 
 2. Now, lets start finetune the model,
 
-   Run the command  `python model_train.py`.
+   Run the file  `model_train.py` to start training the model.
    
    You will be notified from wandb `select option 2` and provide the `wandb api key` mentioned in `tokens_and_model.py`
 
