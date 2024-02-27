@@ -61,10 +61,12 @@ pip install wandb
 2. Now, lets start finetune the model
 
    Run the command  `python model_train.py`.
+   
    You will be notified from wandb `select option 2` and provide the `wandb api key` mentioned in `tokens_and_model.py`
 
-3. By default, model saves in my profile.
-   To save the model in your account, update line 79 and 80 in `model_train.py`
+4. By default, model saves in my profile.
+   
+   To save the model in your account, update `line 79 and 80` in `model_train.py`
 
     ```bash
     ft_model.push_to_hub("<your account name>/mistral-test",token=hf_token)
