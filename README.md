@@ -58,7 +58,7 @@ pip install wandb
    [To use my account, required access details are provided in `tokens_and_model.py` file]
 
 
-2. Now, lets start finetune the model
+2. Now, lets start finetune the model,
 
    Run the command  `python model_train.py`.
    
@@ -69,10 +69,10 @@ pip install wandb
    To save the model in your account, update `line 79 and 80` in `model_train.py`
 
     ```bash
-    ft_model.push_to_hub("<your account name>/mistral-test",token=hf_token)
+    ft_model.push_to_hub("<your account name>/mistral-test",token="<your access token>")
    ```
    ```bash
-   tokenizer.push_to_hub("<your account name>/mistral-test",token=hf_token)
+   tokenizer.push_to_hub("<your account name>/mistral-test",token="<your access token>")
    ```
 
 #### Step 5: Plot the loss
